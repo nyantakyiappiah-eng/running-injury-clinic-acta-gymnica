@@ -67,3 +67,13 @@ source("R/01_clean_run_meta.R")  # create cleaned analysis dataset
 source("R/02_models.R")          # fit main models and output ORs + AUC
 source("R/03_figures.R")         # generate Fig 1 (injury probability vs speed)
 undefined
+This will create `data/derived/analysis_run_meta.rds` and save a publication‑ready figure in `figs/fig1_injury_prob_by_speed.png`.
+
+---
+
+## Citation
+
+If you use this code, please cite:
+
+- Brett A, Ferber R, Fukuchi R, Osis S, Hettinga B. Running Injury Clinic Kinematic Dataset. Figshare+; 2023.  
+  https://plus.figshare.com/articles/dataset/Running_Injury_Clinic_Kinematic_Dataset/24255795 [web:28][web:49]
