@@ -38,3 +38,71 @@ data/
   raw/
     run_data_meta.csv
     walk_data_meta.csv
+The dataset is licensed under **CC BY 4.0**, and the accompanying scripts/functions are licensed under **MIT**, as described on the Figshare+ page.[web:49]
+
+---
+
+## Research goal
+
+The planned manuscript will examine how current running‑related injury status relates to:[web:28][web:49]
+
+- Age  
+- Sex  
+- Body mass index (BMI)  
+- Years of running experience  
+- Competitive level (recreational vs competitive)  
+- Self‑selected treadmill running speed  
+
+using logistic regression models that align with the biomechanics and sports medicine focus of *Acta Gymnica*.[web:45]
+
+---
+
+## Repository structure
+
+Intended layout:
+
+```text
+running-injury-clinic-acta-gymnica/
+  README.md
+  LICENSE
+  .gitignore
+  data/
+    raw/
+      run_data_meta.csv          # not tracked in git
+      walk_data_meta.csv         # not tracked in git
+    derived/
+      analysis_run_meta.rds      # created by 01_clean_run_meta.R
+  R/
+    01_clean_run_meta.R          # data import + cleaning
+    02_models.R                  # regression models + ROC
+    03_figures.R                 # prediction curves and plots
+  figs/
+    fig1_injury_prob_by_speed.png  # created by 03_figures.R
+- `01_clean_run_meta.R`  
+  - Reads the running metadata  
+  - Derives injury status and BMI  
+  - Applies inclusion criteria (e.g., age 18–75, BMI 15–50)  
+  - Saves a cleaned `analysis_run_meta.rds` dataset  
+
+- `02_models.R`  
+  - Fits the main logistic regression model  
+  - Runs spline / sensitivity models  
+  - Computes ROC and AUC  
+
+- `03_figures.R`  
+  - Generates predicted injury probability vs speed curves by competitive level  
+  - Saves a publication‑ready figure (`fig1_injury_prob_by_speed.png`)
+
+***
+
+## How to run
+
+After cloning the repository and downloading the metadata files into `data/raw/`:
+
+1. Open R (or RStudio) with the project folder as working directory.
+2. Run:
+
+```r
+source("R/01_clean_run_meta.R")  # create cleaned analysis dataset
+source("R/02_models.R")          # fit main models and output ORs + AUC
+source("R/03_figures.R")         # generate Fig 1 (injury probability vs speed)
