@@ -38,3 +38,31 @@ data/
   raw/
     run_data_meta.csv
     walk_data_meta.csv
+---
+
+## Research goal
+
+The planned manuscript will examine how current running‑related injury status relates to:[web:28][web:49]
+
+- Age  
+- Sex  
+- Body mass index (BMI)  
+- Years of running experience  
+- Competitive level (recreational vs competitive)  
+- Self‑selected treadmill speed  
+
+using logistic regression models that align with the biomechanics and sports medicine focus of *Acta Gymnica*.[web:45]
+
+---
+
+## How to run
+
+After cloning the repository and downloading the metadata files into `data/raw/`:
+
+1. Open R (or RStudio) with the project folder as working directory.
+2. Run:
+
+```r
+source("R/01_clean_run_meta.R")  # create cleaned analysis dataset
+source("R/02_models.R")          # fit main models and output ORs + AUC
+source("R/03_figures.R")         # generate Fig 1 (injury probability vs speed)
