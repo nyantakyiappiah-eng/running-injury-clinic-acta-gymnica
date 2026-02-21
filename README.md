@@ -13,7 +13,7 @@ The Running Injury Clinic Kinematic Dataset includes treadmill walking and runni
 - Running history (years running, race distance, performance)  
 - Current injury status and injury characteristics  
 
-This repository focuses on the **metadata** (`run_data_meta.csv`, `walk_data_meta.csv`) to study associations between running‑related injury and runner characteristics.
+This repository focuses on the **metadata** files (`run_data_meta.csv`, `walk_data_meta.csv`) to study associations between running‑related injury and runner characteristics.
 
 ---
 
@@ -38,42 +38,3 @@ data/
   raw/
     run_data_meta.csv
     walk_data_meta.csv
----
-
-## Research goal
-
-The planned manuscript will examine how current running‑related injury status relates to:[web:28][web:49]
-
-- Age  
-- Sex  
-- Body mass index (BMI)  
-- Years of running experience  
-- Competitive level (recreational vs competitive)  
-- Self‑selected treadmill speed  
-
-using logistic regression models that align with the biomechanics and sports medicine focus of *Acta Gymnica*.[web:45]
-
----
-
-## How to run
-
-After cloning the repository and downloading the metadata files into `data/raw/`:
-
-1. Open R (or RStudio) with the project folder as working directory.
-2. Run:
-
-```r
-source("R/01_clean_run_meta.R")  # create cleaned analysis dataset
-source("R/02_models.R")          # fit main models and output ORs + AUC
-source("R/03_figures.R")         # generate Fig 1 (injury probability vs speed)
-undefined
-This will create `data/derived/analysis_run_meta.rds` and save a publication‑ready figure in `figs/fig1_injury_prob_by_speed.png`.
-
----
-
-## Citation
-
-If you use this code, please cite:
-
-- Brett A, Ferber R, Fukuchi R, Osis S, Hettinga B. Running Injury Clinic Kinematic Dataset. Figshare+; 2023.  
-  https://plus.figshare.com/articles/dataset/Running_Injury_Clinic_Kinematic_Dataset/24255795 [web:28][web:49]
